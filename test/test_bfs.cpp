@@ -59,6 +59,44 @@ Test(BFS, Simple3)
     EXPECT_EQ(path[0], 3);
 }
 
+Test(BFS, Closed1)
+{
+    UnweightedGraph graph;
+    BFS bfs;
+
+    graph.add(0, 1);
+    graph.add(0, 5);
+    graph.add(1, 2);
+    graph.add(2, 3);
+    graph.add(3, 4);
+    graph.add(4, 5);
+
+    const vector<int32_t> path = bfs.findPath(graph, 0, 5);
+    /* Path: {0, 5} */
+    EXPECT_EQ(path.size(), 2);
+    EXPECT_EQ(path[0], 0);
+    EXPECT_EQ(path[1], 5);
+}
+
+Test(BFS, Closed2)
+{
+    UnweightedGraph graph;
+    BFS bfs;
+
+    graph.add(0, 1);
+    graph.add(0, 5);
+    graph.add(1, 2);
+    graph.add(2, 3);
+    graph.add(3, 4);
+    graph.add(4, 5);
+
+    const vector<int32_t> path = bfs.findPath(graph, 5, 0);
+    /* Path: {5, 0} */
+    EXPECT_EQ(path.size(), 2);
+    EXPECT_EQ(path[0], 5);
+    EXPECT_EQ(path[1], 0);
+}
+
 int main()
 {
     testing::InitGoogleTest();
