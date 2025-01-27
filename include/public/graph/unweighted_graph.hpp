@@ -5,7 +5,7 @@
 #include "graph.hpp"
 
 
-// template<typename T>
+template<typename T>
 class UnweightedGraph
 {
 public:
@@ -13,11 +13,11 @@ public:
     virtual ~UnweightedGraph() = default;
 
     void clear();
-    void add(uint32_t node_1, uint32_t node_2);
-    bool contains(uint32_t node_1, uint32_t node_2);
+    void add(T node_1, T node_2);
+    bool contains(T node_1, T node_2);
 
 private:
-    Graph<uint32_t> adjacents_;
+    Graph<T> adjacents_;
 
 };
 
