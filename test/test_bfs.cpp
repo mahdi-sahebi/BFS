@@ -1,11 +1,12 @@
 #include <cstdint>
 #include <vector>
 #include <gtest/gtest.h>
+#include "graph/unweighted_graph.hpp"
 
 
-Test(BFS, Simple1)
+TEST(BFS, Simple1)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     graph.add(0, 1);
@@ -22,9 +23,9 @@ Test(BFS, Simple1)
     EXPECT_EQ(path[2], 4);
 }
 
-Test(BFS, Simple2)
+TEST(BFS, Simple2)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     graph.add(0, 1);
@@ -42,9 +43,9 @@ Test(BFS, Simple2)
     EXPECT_EQ(path[3], 5);
 }
 
-Test(BFS, Simple3)
+TEST(BFS, Simple3)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     graph.add(0, 1);
@@ -59,9 +60,9 @@ Test(BFS, Simple3)
     EXPECT_EQ(path[0], 3);
 }
 
-Test(BFS, Closed1)
+TEST(BFS, Closed1)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     graph.add(0, 1);
@@ -78,9 +79,9 @@ Test(BFS, Closed1)
     EXPECT_EQ(path[1], 5);
 }
 
-Test(BFS, Closed2)
+TEST(BFS, Closed2)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     graph.add(0, 1);
@@ -97,9 +98,9 @@ Test(BFS, Closed2)
     EXPECT_EQ(path[1], 0);
 }
 
-Test(BFS, Grid1)
+TEST(BFS, Grid1)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     /*
@@ -127,9 +128,9 @@ Test(BFS, Grid1)
     EXPECT_EQ(path[8], 4);
 }
 
-Test(BFS, Grid2)
+TEST(BFS, Grid2)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     /*
@@ -159,9 +160,9 @@ Test(BFS, Grid2)
     EXPECT_EQ(path[9], 20);
 }
 
-Test(BFS, Grid3)
+TEST(BFS, Grid3)
 {
-    UnweightedGraph graph;
+    UnweightedGraph<uint32_t> graph;
     BFS bfs;
 
     /*
@@ -191,6 +192,6 @@ Test(BFS, Grid3)
 
 int main()
 {
-    testing::InitGoogleTest();
+    testing::InitGoogleTEST();
     return RUN_ALL_TESTS();
 }
