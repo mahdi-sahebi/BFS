@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include "graph/graph.hpp"
+#include "graph/unweighted_graph.hpp"// TODO(MN): Delete
 
 
 class BFS
@@ -11,7 +12,8 @@ class BFS
 public:
     virtual ~BFS() = default;
 
-    std::vector<uint32_t> findPath(const Graph<uint32_t>& graph, uint32_t nodeSrc, uint32_t nodeDst);
+    // TODO(M)N: Use Graph as base of all types of graphs
+    std::vector<uint32_t> findPath(const UnweightedGraph& graph, uint32_t nodeSrc, uint32_t nodeDst);
 
 private:
 
