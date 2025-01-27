@@ -13,7 +13,7 @@ if (BUILD_TESTS)
 
     # Linking
     target_link_libraries(${TEST} 
-        PRIVATE GTest::gtest
+        PRIVATE GTest::gtest graph
     )
 
     # Include Directories
