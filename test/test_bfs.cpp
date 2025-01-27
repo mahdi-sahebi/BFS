@@ -7,7 +7,7 @@
 TEST(BFS, Simple1)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -26,7 +26,7 @@ TEST(BFS, Simple1)
 TEST(BFS, Simple2)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -46,7 +46,7 @@ TEST(BFS, Simple2)
 TEST(BFS, Simple3)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -63,7 +63,7 @@ TEST(BFS, Simple3)
 TEST(BFS, Closed1)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     graph.add(0, 1);
     graph.add(0, 5);
@@ -82,7 +82,7 @@ TEST(BFS, Closed1)
 TEST(BFS, Closed2)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     graph.add(0, 1);
     graph.add(0, 5);
@@ -101,7 +101,7 @@ TEST(BFS, Closed2)
 TEST(BFS, Grid1)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     /*
     1  1  0  1  1
@@ -131,7 +131,7 @@ TEST(BFS, Grid1)
 TEST(BFS, Grid2)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     /*
     1  1  0  1  1
@@ -163,7 +163,7 @@ TEST(BFS, Grid2)
 TEST(BFS, Grid3)
 {
     UnweightedGraph<uint32_t> graph;
-    BFS bfs;
+    BFS<uint32_t> bfs;
 
     /*
     1  1  0  1  1
