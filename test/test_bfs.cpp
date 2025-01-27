@@ -97,6 +97,98 @@ Test(BFS, Closed2)
     EXPECT_EQ(path[1], 0);
 }
 
+Test(BFS, Grid1)
+{
+    UnweightedGraph graph;
+    BFS bfs;
+
+    /*
+    1  1  0  1  1
+    1  0  1  1  0
+    1  1  1  0  1
+    0  0  1  1  1
+    1  1  1  0  1
+    */
+    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
+              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
+              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+
+    const vector<int32_t> path = bfs.findPath(graph, 0, 4);
+    /* Path: {0, 5, 10, 11, 12, 7, 8, 3, 4} */
+    EXPECT_EQ(path.size(), 9);
+    EXPECT_EQ(path[0], 0);
+    EXPECT_EQ(path[1], 5);
+    EXPECT_EQ(path[2], 10);
+    EXPECT_EQ(path[3], 11);
+    EXPECT_EQ(path[4], 12);
+    EXPECT_EQ(path[5], 7);
+    EXPECT_EQ(path[6], 8);
+    EXPECT_EQ(path[7], 3);
+    EXPECT_EQ(path[8], 4);
+}
+
+Test(BFS, Grid2)
+{
+    UnweightedGraph graph;
+    BFS bfs;
+
+    /*
+    1  1  0  1  1
+    1  0  1  1  0
+    1  1  1  0  1
+    0  0  1  1  1
+    1  1  1  0  1
+    */
+    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
+              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
+              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+
+
+    const vector<int32_t> path = bfs.findPath(graph, 1, 20);
+    /* Path: {1, 0, 5, 10, 11, 12, 17, 22, 21, 20} */
+    EXPECT_EQ(path.size(), 10);
+    EXPECT_EQ(path[0], 1);
+    EXPECT_EQ(path[1], 0);
+    EXPECT_EQ(path[2], 5);
+    EXPECT_EQ(path[3], 10);
+    EXPECT_EQ(path[4], 11);
+    EXPECT_EQ(path[5], 12);
+    EXPECT_EQ(path[6], 17);
+    EXPECT_EQ(path[7], 22);
+    EXPECT_EQ(path[8], 21);
+    EXPECT_EQ(path[9], 20);
+}
+
+Test(BFS, Grid3)
+{
+    UnweightedGraph graph;
+    BFS bfs;
+
+    /*
+    1  1  0  1  1
+    1  0  1  1  0
+    1  1  1  0  1
+    0  0  1  1  1
+    1  1  1  0  1
+    */
+    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
+              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
+              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+
+    const vector<int32_t> path = bfs.findPath(graph, 14, 4);
+    /* Path: {14, 19, 18, 17, 12, 7, 8, 3, 4} */
+    EXPECT_EQ(path.size(), 9);
+    EXPECT_EQ(path[0], 14);
+    EXPECT_EQ(path[1], 19);
+    EXPECT_EQ(path[2], 18);
+    EXPECT_EQ(path[3], 17);
+    EXPECT_EQ(path[4], 12);
+    EXPECT_EQ(path[5], 7);
+    EXPECT_EQ(path[6], 8);
+    EXPECT_EQ(path[7], 3);
+    EXPECT_EQ(path[8], 4);
+}
+
 int main()
 {
     testing::InitGoogleTest();
