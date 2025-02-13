@@ -2,12 +2,16 @@
 #include <vector>
 #include <gtest/gtest.h>
 #include "graph/unweighted_graph.hpp"
+#include "algorithms/bfs/bfs.hpp"
 
+using namespace std;
+
+// TODO(MN): Stard and end nodes where not exist
 
 TEST(BFS, Simple1)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -15,9 +19,9 @@ TEST(BFS, Simple1)
     graph.add(2, 4);
     graph.add(3, 5);
 
-    const vector<int32_t> path = bfs.findPath(graph, 0, 4);
+    const vector<uint32_t>path = bfs.findPath(graph, 0, 4);
     /* Path: {0, 2, 4} */
-    EXPECT_EQ(path.size(), 3);
+    ASSERT_EQ(path.size(), 3);
     EXPECT_EQ(path[0], 0);
     EXPECT_EQ(path[1], 2);
     EXPECT_EQ(path[2], 4);
@@ -25,8 +29,8 @@ TEST(BFS, Simple1)
 
 TEST(BFS, Simple2)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -34,9 +38,9 @@ TEST(BFS, Simple2)
     graph.add(2, 4);
     graph.add(3, 5);
 
-    const vector<int32_t> path = bfs.findPath(graph, 0, 5);
+    const vector<uint32_t>path = bfs.findPath(graph, 0, 5);
     /* Path: {0, 1, 3, 5} */
-    EXPECT_EQ(path.size(), 4);
+    ASSERT_EQ(path.size(), 4);
     EXPECT_EQ(path[0], 0);
     EXPECT_EQ(path[1], 1);
     EXPECT_EQ(path[2], 3);
@@ -45,8 +49,8 @@ TEST(BFS, Simple2)
 
 TEST(BFS, Simple3)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     graph.add(0, 1);
     graph.add(0, 2);
@@ -54,16 +58,16 @@ TEST(BFS, Simple3)
     graph.add(2, 4);
     graph.add(3, 5);
 
-    const vector<int32_t> path = bfs.findPath(graph, 3, 3);
+    const vector<uint32_t>path = bfs.findPath(graph, 3, 3);
     /* Path: {3} */
-    EXPECT_EQ(path.size(), 1);
+    ASSERT_EQ(path.size(), 1);
     EXPECT_EQ(path[0], 3);
 }
 
 TEST(BFS, Closed1)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     graph.add(0, 1);
     graph.add(0, 5);
@@ -72,17 +76,17 @@ TEST(BFS, Closed1)
     graph.add(3, 4);
     graph.add(4, 5);
 
-    const vector<int32_t> path = bfs.findPath(graph, 0, 5);
+    const vector<uint32_t>path = bfs.findPath(graph, 0, 5);
     /* Path: {0, 5} */
-    EXPECT_EQ(path.size(), 2);
+    ASSERT_EQ(path.size(), 2);
     EXPECT_EQ(path[0], 0);
     EXPECT_EQ(path[1], 5);
 }
 
 TEST(BFS, Closed2)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     graph.add(0, 1);
     graph.add(0, 5);
@@ -91,17 +95,17 @@ TEST(BFS, Closed2)
     graph.add(3, 4);
     graph.add(4, 5);
 
-    const vector<int32_t> path = bfs.findPath(graph, 5, 0);
+    const vector<uint32_t>path = bfs.findPath(graph, 5, 0);
     /* Path: {5, 0} */
-    EXPECT_EQ(path.size(), 2);
+    ASSERT_EQ(path.size(), 2);
     EXPECT_EQ(path[0], 5);
     EXPECT_EQ(path[1], 0);
 }
 
 TEST(BFS, Grid1)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     /*
     1  1  0  1  1
@@ -110,13 +114,13 @@ TEST(BFS, Grid1)
     0  0  1  1  1
     1  1  1  0  1
     */
-    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
-              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
-              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+    graph.add({{ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10},
+               {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19},
+               {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
 
-    const vector<int32_t> path = bfs.findPath(graph, 0, 4);
+    const vector<uint32_t>path = bfs.findPath(graph, 0, 4);
     /* Path: {0, 5, 10, 11, 12, 7, 8, 3, 4} */
-    EXPECT_EQ(path.size(), 9);
+    ASSERT_EQ(path.size(), 9);
     EXPECT_EQ(path[0], 0);
     EXPECT_EQ(path[1], 5);
     EXPECT_EQ(path[2], 10);
@@ -130,8 +134,8 @@ TEST(BFS, Grid1)
 
 TEST(BFS, Grid2)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     /*
     1  1  0  1  1
@@ -140,14 +144,14 @@ TEST(BFS, Grid2)
     0  0  1  1  1
     1  1  1  0  1
     */
-    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
-              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
-              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+    graph.add({{ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10},
+               {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19},
+               {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
 
 
-    const vector<int32_t> path = bfs.findPath(graph, 1, 20);
+    const vector<uint32_t>path = bfs.findPath(graph, 1, 20);
     /* Path: {1, 0, 5, 10, 11, 12, 17, 22, 21, 20} */
-    EXPECT_EQ(path.size(), 10);
+    ASSERT_EQ(path.size(), 10);
     EXPECT_EQ(path[0], 1);
     EXPECT_EQ(path[1], 0);
     EXPECT_EQ(path[2], 5);
@@ -162,8 +166,8 @@ TEST(BFS, Grid2)
 
 TEST(BFS, Grid3)
 {
-    UnweightedGraph<uint32_t> graph;
-    BFS<uint32_t> bfs;
+    UnweightedGraph graph;
+    BFS bfs;
 
     /*
     1  1  0  1  1
@@ -172,13 +176,13 @@ TEST(BFS, Grid3)
     0  0  1  1  1
     1  1  1  0  1
     */
-    graph.add({ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10}, 
-              {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19}, 
-              {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
+    graph.add({{ 0,  1}, { 3,  4}, { 0,  5}, { 3,  8}, { 7,  8}, { 5, 10},
+               {10, 11}, {11, 12}, { 7, 12}, {12, 17}, {17, 18}, {18, 19},
+               {14, 19}, {20, 21}, {21, 22}, {17, 22}, {19, 24}});
 
-    const vector<int32_t> path = bfs.findPath(graph, 14, 4);
+    const vector<uint32_t>path = bfs.findPath(graph, 14, 4);
     /* Path: {14, 19, 18, 17, 12, 7, 8, 3, 4} */
-    EXPECT_EQ(path.size(), 9);
+    ASSERT_EQ(path.size(), 9);
     EXPECT_EQ(path[0], 14);
     EXPECT_EQ(path[1], 19);
     EXPECT_EQ(path[2], 18);
@@ -192,6 +196,6 @@ TEST(BFS, Grid3)
 
 int main()
 {
-    testing::InitGoogleTEST();
+    testing::InitGoogleTest();
     return RUN_ALL_TESTS();
 }
